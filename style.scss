@@ -1,0 +1,231 @@
+$myColors: (
+    Violet: hsl(257, 40%, 49%),
+    Soft-Magenta: hsl(300, 69%, 71%)
+);
+
+@mixin desktop {
+    @media(min-width: 1200px) {
+        @content;
+    }
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: url(./images/bg-mobile.svg);
+    min-height: 100vh;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-color: map-get($myColors, Violet);
+    padding: 2.3em;
+    position: relative;
+
+    @include desktop {
+        min-height: 100vh;
+        background: url(./images/bg-desktop.svg);
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-color: map-get($myColors, Violet);
+        padding: 0em 5em;
+        display: flex;
+        align-items: center;
+    }
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    min-height: 100vh;
+
+    @include desktop {
+        min-height: fit-content;
+        padding-top: 3em;
+        padding-bottom: 2.5em;
+
+    }
+
+
+    .logo {
+        margin-bottom: 3.3em;
+        width: 100%;
+
+        @include desktop {
+            margin-bottom: 5em;
+        }
+
+        img {
+            max-width: 43%;
+
+            @include desktop {
+                max-width: 16%;
+            }
+        }
+    }
+
+}
+
+.content-container {
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    @include desktop {
+        display: grid;
+        grid-template-columns: 56% auto;
+    }
+
+    .image-container {
+        margin-bottom: 3.5em;
+
+        @include desktop {
+            margin: 0;
+        }
+
+        img {
+            width: 100%;
+        }
+    }
+
+    .content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        
+        @include desktop{
+            text-align: start;
+            padding-left: 2.3em;
+            padding-top: 6em;
+            display: flex;
+            height: 100%;
+            align-items: flex-start;
+        }
+
+        h1 {
+            text-align: center;
+            font-family: 'Poppins', sans-serif;
+            color: white;
+            font-size: 1.5rem;
+            font-family: 600;
+            line-height: 1.4;
+            margin-bottom: 0.5em;
+            @include desktop{
+                text-align: start;
+                font-size: 2.4rem;
+            }
+        }
+
+        p {
+            text-align: center;
+            color: white;
+            font-family: 'Open Sans', sans-serif;
+            font-size: 1rem;
+            font-weight: 400;
+            line-height: 1.5;
+            margin-bottom: 1.5em;
+            @include desktop{
+                text-align: start;
+                font-size: 1.1rem;
+            }
+        }
+
+        button {
+            padding: 1.2em 6.5em;
+            border-radius: 30px;
+            border: none;
+            margin-bottom: 5em;
+            box-shadow: 0 3px 5px rgba(0, 0, 0, 0.3);
+            color: map-get($myColors, Violet);
+            background-color: white;
+
+        }
+
+        button:hover {
+            background-color: map-get($myColors, Soft-Magenta);
+            color: white;
+            transition: 0.2s;
+            cursor: pointer;
+        }
+    }
+
+}
+
+.socials {
+    position: absolute;
+    bottom: 0;
+    align-self: center;
+
+    @include desktop {
+        position: relative;
+        align-self: flex-end;
+    }
+
+    ul {
+        display: flex;
+        gap: 0.5em;
+        @include desktop{
+            gap: 0.8em;
+        }
+
+        li {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 1.8em;
+            height: 1.8em;
+            list-style: none;
+            border: 1px solid white;
+            border-radius: 50%;
+            font-size: 0.9rem;
+
+            @include desktop{
+                width: 2.2em;
+                height: 2.2em;
+                font-size: 1.15rem;
+                border: 2px solid white;
+            }
+
+            a {
+                color: white;
+            }
+        }
+
+        li:hover a {
+            color: map-get($myColors, Soft-Magenta);
+        }
+
+        li:hover {
+            border-color: map-get($myColors, Soft-Magenta);
+        }
+    }
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, 0);
+    white-space: nowrap;
+
+    @include desktop {
+        position: relative;
+
+    }
+
+    .attribution {
+        font-size: 11px;
+        text-align: center;
+
+    }
+
+    .attribution a {
+        // color: hsl(228, 45%, 44%);
+        color: white;
+        text-decoration: none;
+    }
+}
